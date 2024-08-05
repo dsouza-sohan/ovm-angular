@@ -1,0 +1,86 @@
+<!-- <div class="form-container">
+  <form
+    class="form-signin login-form"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h3 class="txt-color-mg">Sign in</h3>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input
+      type="email"
+      id="inputEmail"
+      class="form-control"
+      placeholder="Email address"
+      formControlName="email"
+      required
+      autofocus
+    />
+    <label for="inputPassword" class="sr-only mt-2">Password</label>
+    <input
+      type="password"
+      id="inputPassword"
+      class="form-control"
+      placeholder="Password"
+      formControlName="password"
+      required
+    />
+    <div class="row">
+      <div class="col-8 mt-2 anchor" (click)="openRegistrationPage()">
+        New User?
+      </div>
+      <div class="col-4">
+        <button
+          class="btn btn-lg btn-primary btn-block mt-2 right-corner"
+          type="submit"
+        >
+          Log in
+        </button>
+      </div>
+    </div>
+  </form>
+</div> -->
+
+<div class="form-container">
+  <form
+    class="form-signin login-form"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h3 class="txt-color-mg">Sign in</h3>
+    <div class="form-group">
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input
+        type="email"
+        id="inputEmail"
+        class="form-control"
+        placeholder="Email"
+        formControlName="email"
+        required
+        autofocus
+      />
+    </div>
+    <div class="form-group mt-3">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+    </div>
+    <div class="row mt-3">
+      <div class="col-8 anchor">
+        <a href="javascript:void(0);" (click)="openRegistrationPage()"
+          >New User?</a
+        >
+      </div>
+      <div class="col-4 text-right">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Log in
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
