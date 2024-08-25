@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+// .btn-primary{
+//     background-color: #6e4e5f !important;
+//     border-color: #bd0061 !important;
+//     align-items: flex-end;
+// }
+// .btn-primary:hover{
+//     background-color: #bd0061 !important;
+//     border-color: #bd0061 !important;
+//     align-items: flex-end;
+// }
+// .anchor{
+//     color: #bd0061;
+// }
+// .anchor:hover{
+//     text-decoration: underline;
+//     cursor:grab;
+// }
+// .txt-color-mg{
+//     color:#bd0061 ;
+// }
+// .txt-error{
+//     color: red;
+// }
+
+.button {
+    width: 100%;
+    background-color: #a50b63;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #8e0951;
+}
+
+
