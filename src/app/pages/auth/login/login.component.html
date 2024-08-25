@@ -1,4 +1,4 @@
-<body>
+
   <div class="container">
     <div class="form-container">
       <h2>Sign in</h2>
@@ -21,9 +21,8 @@
           required
         />
 
-        <a href="#">New User?</a>
-        <button type="submit">Log in</button>
+        <ovm-anchor [name]="'New User?'"></ovm-anchor>
+         <ovm-button [buttonName]="'Login'"  (onClick)="button($event)"></ovm-button>
       </form>
     </div>
   </div>
-</body>
