@@ -1,154 +1,8 @@
 <div id="root">
     <div class="main-page">
-        <div class="navbar">
-            <div class="navbar-container">
-                <div class="navbar-header">
-                    <div class="navbar-header-left">
-                        <div class="navbar-header-left-logo">
-                            <img src="ovmlogo.png" alt="" />
-                        </div>
-                        <div class="navbar-header-left-search">
-                            <div class='navbar-input'>
-                                <input type='text' placeholder='Search Cars or brands eg. Swift, or Maruti' />
-                            </div>
-                            <div class='navbar-search-icon'>
-                                <mat-icon fontIcon="search"></mat-icon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navbar-header-right">
-                        <div class="languages">
-                            <div class="language-name">
-                                <p>English</p>
-                            </div>
-                            <div class="language-dropmenu">
-                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                            </div>
-                        </div>
-                        <div class="login-register">
-                            <button>
-                                <span>
-                                    <mat-icon fontIcon="account_circle"></mat-icon>
-                                </span>
-                                <p>
-                                    Login/Register
-                                </p>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="navbar-footer">
-                    <div class="navbar-footer-left">
-                        <div class="navbar-footer-left-categories">
-                            <div class="navbar-footer-left-categories-name">
-                                <p>NEW CAR</p>
-                            </div>
-                            <div class="navbar-footer-left-categories-dropmenu">
-                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                            </div>
-                            <div class="navbar-footer-left-categories-name">
-                                <p>USED CAR</p>
-                            </div>
-                            <div class="navbar-footer-left-categories-dropmenu">
-                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                            </div>
-                            <div class="navbar-footer-left-categories-name" style="margin-right: '18px'">
-                                <p>SELL CAR</p>
-                            </div>
-                            <div class="navbar-footer-left-categories-name" style="margin-right: '15px'">
-                                <p>COMPARE CARS</p>
-                            </div>
-                            <div class="navbar-footer-left-categories-name">
-                                <p>NEWS & REVIEWS</p>
-                            </div>
-                            <div class="navbar-footer-left-categories-dropmenu">
-                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                            </div>
-                            <div class="navbar-footer-left-categories-name">
-                                <p>CARDEKO VENTURES</p>
-                            </div>
-                            <div class="navbar-footer-left-categories-dropmenu">
-                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                            </div>
-                            <div class="navbar-footer-left-categories-name">
-                                <p>MORE</p>
-                            </div>
-                            <div class="navbar-footer-left-categories-dropmenu">
-                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navbar-footer-right">
-                        <div class="navbar-footer-right-city">
-                            <div class="navbar-location">
-                                <mat-icon fontIcon="location_on"></mat-icon>
-                            </div>
-                            <div class="navbar-select">
-                                <span>
-                                    Select City
-                                </span>
-                            </div>
-                            <div class="navbar-dropdown">
-                                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ovm-navbar></ovm-navbar>
 
-        <div class="slide-page">
-            <div class="vehicle-card">
-                <div class="vehicle-card-title">
-                    <span>Find your right car</span>
-                </div>
-                <div class="vehicle-card-buttons">
-                    <div class='card-button'>
-                        <button>New Car</button>
-                    </div>
-                    <div class='card-button'>
-                        <button>Used Car</button>
-                    </div>
-                </div>
-                <div class="vehicle-card-select">
-                    <div class="select-button">
-                        <input type="radio" checked="checked" name='radio' />
-                        <span>By Budget</span>
-                    </div>
-                    <div class="select-button">
-                        <input type="radio" name='radio' />
-                        <span>By Brand</span>
-                    </div>
-                </div>
-                <div class="vehicle-card-input">
-                    <div class="vehicle-card-input-box">
-                        <input type="input" placeholder="Select Brand" />
-                        <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                    </div>
-                    <div class="vehicle-card-input-box">
-                        <input type="input" placeholder="Select Model" />
-                        <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-                    </div>
-                </div>
-                <div class="vehicle-card-search">
-                    <button>Search</button>
-                </div>
-                <div class="vehicle-card-advancedSearch">
-                    <span>Advanced Search</span>
-                    <mat-icon fontIcon="keyboard_arrow_right"></mat-icon>
-                </div>
-            </div>
-            <div class="slide-container">
-                <!-- <Slide>-->
-                <div class="each-slide">
-                    <img src='https://stimg.cardekho.com/images/uploadimages/1623651873958/Desktop-Banner.jpg' alt="" />
-                </div>
-                <!-- <div class="each-slide">
-                    <img src='https://stimg.cardekho.com/images/uploadimages/1630072524986/WEBCD.jpg' alt=""/>
-                </div> -->
-                <!-- </Slide> -->
-            </div>
-        </div>
+        <ovm-slider></ovm-slider>
 
 
         <div class="newtech">
@@ -217,27 +71,28 @@
                             <div class="newtech-details-left-title">
                                 <span>It’s an experience unlike before</span>
                             </div>
-        
+
                             <div class="newtech-details-left-points">
                                 <div>Man. Machine. And AI.</div>
                                 <div>MG Astor. The AI Affair.</div>
                             </div>
-        
-        
+
+
                             <div class="newtech-details-left-description">
                                 <span>MG Astor. The AI Affair.</span>
                             </div>
-        
+
                             <div class="newtech-details-left-button">
                                 <div>
                                     <button>Know More</button>
                                 </div>
                                 <div>
-                                    <img src="https://stimg.cardekho.com/images/uploadimages/1631678830268/logo.png" alt="" />
+                                    <img src="https://stimg.cardekho.com/images/uploadimages/1631678830268/logo.png"
+                                        alt="" />
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="newtech-details-right">
                             <img src="https://stimg.cardekho.com/images/uploadimages/1631682085424/1.gif" alt="" />
                         </div>
@@ -246,175 +101,8 @@
             </div>
         </div>
 
-        <div class="car-groups">
-            <div class="car-groups-container">
-                <div class="car-groups-header">
-                    <div class="car-groups-header-title">
-                        <span>The most searched cars</span>
-                    </div>
-                    <div class="car-groups-header-nav-components">
-                        <button>Hatchback</button>
-                    </div>
-                </div>
-                <div class="car-groups-items">
-                    <div>
-                        <div class="caritem">
-                            <div class="caritem-container">
-                                <div class="caritem-image">
-                                    <img src="https://stimg.cardekho.com/images/carexteriorimages/630x420/Tata/New-Safari/8376/Tata-New-Safari-XZA-Plus-Adventure-Edition-AT/1614147643555/front-left-side-47.jpg" alt=""/>
-                                </div>
-                                <div class="caritem-title">
-                                    <span>Tata Safari XZA Plus Gold AT</span>
-                                </div>
-                                <div class="caritem-price">
-                                    <span>Rs 23.17 Lakh</span>
-                                </div>
-                                <div class="caritem-offers">
-                                    <button>Check September Offers</button>
-                                </div>
-                                <div class="caritem-available">
-                                    <span>33 Available Cars</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div>
-                        <div class="caritem">
-                            <div class="caritem-container">
-                                <div class="caritem-image">
-                                    <img src={image} alt=""/>
-                                </div>
-                                <div class="caritem-title">
-                                    <span>{title}</span>
-                                </div>
-                                <div class="caritem-price">
-                                    <span>{price}</span>
-                                </div>
-                                {available===undefined?
-                                <div class="caritem-offers">
-                                    <button>Check September Offers</button>
-                                </div>:
-                                <div class="caritem-available">
-                                    <span>{available}</span>
-                                </div>}
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-        </div>
 
-        <div class="footer">
-            <div class="footer-header">
-                <div class="footer-header-info">
-                    <div class="footer-header-info-left">
-                        <!-- <BadgeOutlined/> -->
-                    </div>
-                    <div class="footer-header-info-right">
-                        <div class="footer-header-info-right-title">
-                            <span>India’s #1</span>
-                        </div>
-                        <div class="footer-header-info-right-description">
-                            <span>Largest Auto portal</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-header-info">
-                    <div class="footer-header-info-left">
-                        <!-- <CarRentalOutlined/> -->
-                    </div>
-                    <div class="footer-header-info-right">
-                        <div class="footer-header-info-right-title">
-                            <span>Car Sold</span>
-                        </div>
-                        <div class="footer-header-info-right-description">
-                            <span>Every 4 minute</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-header-info">
-                    <div class="footer-header-info-left">
-                        <!-- <LocalOfferOutlined/> -->
-                    </div>
-                    <div class="footer-header-info-right">
-                        <div class="footer-header-info-right-title">
-                            <span>Offers</span>
-                        </div>
-                        <div class="footer-header-info-right-description">
-                            <span>Stay updated pay less</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-header-info">
-                    <div class="footer-header-info-left">
-                        <!-- <CompareOutlined/> -->
-                    </div>
-                    <div class="footer-header-info-right">
-                        <div class="footer-header-info-right-title">
-                            <span>Compare</span>
-                        </div>
-                        <div class="footer-header-info-right-description">
-                            <span>Decode the right car</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-main">
-                <div class="footer-main-overview">
-                    <div class="footer-main-overview-title">
-                        <span>OVERVIEW</span>
-                    </div>
-                    <div class="footer-main-overview-items">
-                        <div>About us</div>
-                        <div>FAQs</div>
-                        <div>Privacy Policy</div>
-                        <div>Terms & Conditions</div>
-                        <div>Corporate Policies</div>
-                    </div>
-                </div>
-                <div class="footer-main-others">
-                    <div class="footer-main-others-title">
-                        <span>OTHERS</span>
-                    </div>
-                    <div class="footer-main-others-items">
-                        <div>Advertise with Us</div>
-                        <div>Careers</div>
-                        <div>Customer Care</div>
-                    </div>
-                </div>
-                <div class="footer-main-connect">
-                    <div class="footer-main-connect-title">
-                        <span>CONNECT WITH US</span>
-                    </div>
-                    <div class="footer-main-connect-items">
-                        <div>1800 200 3000 (Toll-Free)</div>
-                        <div>support</div>
-                        <div>Dealer solutions</div>
-                        <div>Used Cars Business</div>
-                        <div>Contact Us</div>
-                        <div>Feedback</div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="footer-copyright-left">
-                    <span>© 2021 Girnar Software Pvt. Ltd.</span>
-                </div>
-                <div class="footer-copyright-right">
-                    <div class="footer-copyright-right-item">
-                        <img src="https://stimg.cardekho.com/pwa/img//gaadi-new-logo.svg" alt=""/>
-                    </div>
-                    <div class="footer-copyright-right-item">
-                        <img src="https://stimg.cardekho.com/pwa/img//zigwheels.png" alt=""/>
-                    </div>
-                    <div class="footer-copyright-right-item">
-                        <img src="https://stimg.cardekho.com/pwa/img//bikedekho.png" alt=""/>
-                    </div>
-                    <div class="footer-copyright-right-item">
-                        <img src="https://stimg.cardekho.com/pwa/img//logo/id-main-logo.svg" alt=""/>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        <ovm-car-listing></ovm-car-listing>
     </div>
 </div>
