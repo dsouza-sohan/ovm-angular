@@ -1,0 +1,204 @@
+.navbar {
+    height: 15vh;
+    box-shadow: 0 0 10px #ccc;
+
+    &-container {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 99;
+        background-color: white;
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 80%;
+        padding-top: 10px;
+
+        &-left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 50vw;
+
+            &-logo {
+                margin-right: 40px;
+
+                &>img {
+                    height: 60px;
+                    width: 120px;
+                }
+            }
+
+            &-search {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                height: 30px;
+                width: 300px;
+
+                .navbar-input {
+                    &>input {
+                        height: 18px;
+                        width: 250px;
+                        font-size: 0.6rem;
+                        border: none;
+                        margin-bottom: 2px;
+                        margin-left: 5px;
+
+                        &:focus,
+                        input:focus {
+                            outline: none;
+                        }
+                    }
+                }
+
+                .navbar-search-icon {
+                    display: flex;
+                    align-items: center;
+
+                    .MuiSvgIcon-root {
+                        height: 20px;
+                    }
+                }
+            }
+        }
+
+        &-right {
+            width: 50vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+
+            .languages {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .language-name {
+                    font-size: 0.7rem;
+                    text-decoration: underline;
+                }
+
+                .language-dropmenu {
+                    // display: flex;
+                    // align-items: center;
+                    // .MuiSvgIcon-root{
+                    //     height: 20px;
+                    // }
+                }
+            }
+
+            .login-register {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &>button {
+                    border: none;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-end;
+                    justify-content: center;
+                    width: 150px;
+                    height: 35px;
+                    background-color: #f75d34;
+                    margin-left: 25px;
+
+                    &>span {
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+
+                        Mat-icon {
+                            color: white;
+                        }
+                    }
+
+                    &>p {
+                        padding-left: 5px;
+                        color: white;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+    &-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%;
+        align-items: flex-start;
+        margin-top: 15px;
+
+        &-left {
+            display: flex;
+            flex-direction: flex-start;
+
+            &-categories {
+                display: flex;
+                flex-direction: row;
+
+                &-name {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    font-size: 0.8rem;
+                    color: rgb(105, 105, 105);
+                    font-weight: 600;
+                }
+
+                &-dropmenu {
+                    // display: flex;
+                    // flex-direction: row;
+                    // align-items: center;
+                    margin-right: 15px;
+                }
+            }
+        }
+
+        &-right {
+            display: flex;
+
+            &-city {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .navbar-location {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                }
+
+                .navbar-select {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    &>span {
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        color: #808080;
+                    }
+                }
+
+                .navbar-dropdown {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}

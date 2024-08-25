@@ -1,0 +1,152 @@
+.slide-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10%;
+
+    .slide-container {
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+
+        .each-slide {
+            height: 60vh;
+
+            &>img {
+                // height: 60vh;
+                width: 100%;
+            }
+        }
+    }
+
+    .vehicle-card {
+        position: relative;
+        z-index: 1;
+        background-color: white;
+        margin-top: 45px;
+        right: 30%;
+        height: 320px;
+        width: 250px;
+        padding: 25px;
+        color: black;
+
+        &-title {
+            font-size: 1.5rem;
+            padding-bottom: 20px;
+            font-weight: 700;
+        }
+
+        &-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .card-button {
+                &>button {
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    height: 45px;
+                    width: 115px;
+                    background-color: white;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+
+                    &:active,
+                    &:focus {
+                        background-color: black;
+                        color: white
+                    }
+                }
+            }
+        }
+
+        &-select {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin-top: 10px;
+
+            .select-button {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-right: 10px;
+
+                &>input {
+                    height: 1.2em;
+                    width: 1.2em;
+                    border-radius: 50%;
+                    margin-right: 5px;
+                }
+
+                &>span {
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        &-input {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 20px;
+
+            &-box {
+                border: 1px solid #ccc;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &>input {
+                    border-radius: 5px;
+                    width: 216px;
+                    height: 40px;
+                    padding-left: 5px;
+                    font-size: 0.8rem;
+                    border: none;
+
+                    &:active,
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        &-search {
+            &>button {
+                border: none;
+                width: 100%;
+                background-color: #f75d34;
+                color: white;
+                height: 40px;
+                border-radius: 5px;
+                margin-top: 20px;
+                font-weight: 600;
+            }
+        }
+
+        &-advancedSearch {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 10px;
+
+            &>span {
+                font-size: .8rem;
+                color: rgb(126, 126, 126);
+                margin-right: 3px;
+            }
+
+            .MuiSvgIcon-root {
+                width: 15px;
+                color: rgb(180, 180, 180);
+                margin-top: 2px;
+            }
+        }
+    }
+}

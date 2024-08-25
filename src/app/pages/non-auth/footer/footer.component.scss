@@ -1,0 +1,118 @@
+.footer {
+    margin-top: 50px;
+    border-bottom: 1px solid #ccc;
+
+    &-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border: 1px solid #ccc;
+
+        &-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 200px;
+            height: 100px;
+
+            &-left {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .MuiSvgIcon-root {
+                    height: 50px;
+                    width: 50px;
+                }
+            }
+
+            &-right {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                margin-left: 5px;
+
+                &-title {
+                    &>span {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                    }
+                }
+
+                &-description {
+                    &>span {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+
+    &-main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 30px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 30px;
+
+        &-overview,
+        &-others,
+        &-connect {
+            display: flex;
+            flex-direction: column;
+
+            &-title {
+                &>span {
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                }
+            }
+
+            &-items {
+                margin-top: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+
+                &>div {
+                    font-size: 0.8rem;
+                    color: rgb(117, 117, 117);
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    &-copyright {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 30px 0 30px;
+
+        &-left {
+            &>span {
+                font-size: 0.8rem;
+                color: rgb(117, 117, 117);
+            }
+        }
+
+        &-right {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            &-item {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &>img {
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+}
