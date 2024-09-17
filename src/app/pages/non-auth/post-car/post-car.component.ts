@@ -139,6 +139,7 @@ export default class PostCarComponent {
         price: this.f.price.value,
         isBiddable: this.f.isBiddable.value === 'Yes' ? true : false,
         marketType: this.f.marketType.value,
+        user_id: JSON.parse(localStorage.getItem('currentUser') || '{}').id,
         vehicleSummary: {
           driveTrain: this.f.driveTrain.value,
           milesDriven: this.f.milesDriven.value,

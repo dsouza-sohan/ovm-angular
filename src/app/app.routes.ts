@@ -34,6 +34,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/non-auth/post-car/post-car.component'),
       },
+      {
+        path: 'profile',
+        loadComponent: () =>
+          import('./pages/non-auth/profile/profile.component'),
+      },
     ],
   },
 ];

@@ -1,1 +1,162 @@
-<p>profile works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="updateDetails()">
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img
+            class="rounded-circle mt-5"
+            width="150px"
+            [src]="getProfileImage()"
+          /><span class="font-weight-bold">Edogaru</span
+          ><span class="text-black-50"></span><span> </span>
+        </div>
+      </div>
+      <div class="col-md-9 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Profile Settings</h4>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label class="labels">Name</label
+              ><input
+                type="text"
+                class="form-control"
+                placeholder="first name"
+                value=""
+                formControlName="firstname"
+              />
+              <div
+                *ngIf="isFormSubmitted && f.firstname.errors"
+                class="input-group mb-3"
+                style="font-size: 0.7rem; color: red; position: absolute"
+              >
+                <div *ngIf="f.firstname.errors['required']">
+                  *Firstname is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="labels">Surname</label
+              ><input
+                type="text"
+                class="form-control"
+                value=""
+                placeholder="surname"
+                formControlName="lastname"
+              />
+              <div
+                *ngIf="isFormSubmitted && f.lastname.errors"
+                class="input-group mb-3"
+                style="font-size: 0.7rem; color: red; position: absolute"
+              >
+                <div *ngIf="f.lastname.errors['required']">
+                  *Surname is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels">Mobile Number</label
+              ><input
+                type="text"
+                class="form-control"
+                placeholder="enter phone number"
+                value=""
+                formControlName="phone"
+              />
+              <div
+                *ngIf="isFormSubmitted && f.phone.errors"
+                class="input-group mb-3"
+                style="font-size: 0.7rem; color: red; position: absolute"
+              >
+                <div *ngIf="f.phone.errors['required']">
+                  *Mobile Number is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label class="labels">Email</label
+              ><input
+                type="text"
+                class="form-control"
+                placeholder="enter email"
+                value=""
+                formControlName="email"
+              />
+              <div
+                *ngIf="isFormSubmitted && f.email.errors"
+                class="input-group mb-3"
+                style="font-size: 0.7rem; color: red; position: absolute"
+              >
+                <div *ngIf="f.email.errors['required']">*Email is required</div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label class="labels">Address</label>
+              <select class="form-control" formControlName="address">
+                <option value="null">Select address</option>
+                <option
+                  *ngFor="let add of addressList"
+                  [value]="add.summaryline"
+                >
+                  {{ add.summaryline }}
+                </option>
+              </select>
+              <div
+                *ngIf="isFormSubmitted && f.address.errors"
+                class="input-group mb-3"
+                style="font-size: 0.7rem; color: red; position: absolute"
+              >
+                <div *ngIf="f.address.errors['required']">
+                  *Address is required
+                </div>
+              </div>
+            </div>
+            <div
+              class="mt-5 text-center"
+              style="justify-content: flex-end; display: flex"
+            >
+              <button class="btn btn-primary profile-button" type="submit">
+                Save Profile
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-4">
+      <div class="p-3 py-5">
+        <div
+          class="d-flex justify-content-between align-items-center experience"
+        >
+          <span>Edit Experience</span
+          ><span class="border px-3 p-1 add-experience"
+            ><i class="fa fa-plus"></i>&nbsp;Experience</span
+          >
+        </div>
+        <br />
+        <div class="col-md-12">
+          <label class="labels">Experience in Designing</label
+          ><input
+            type="text"
+            class="form-control"
+            placeholder="experience"
+            value=""
+          />
+        </div>
+        <br />
+        <div class="col-md-12">
+          <label class="labels">Additional Details</label
+          ><input
+            type="text"
+            class="form-control"
+            placeholder="additional details"
+            value=""
+          />
+        </div>
+      </div>
+    </div> -->
+      </div>
+    </div>
+  </div>
+</form>
