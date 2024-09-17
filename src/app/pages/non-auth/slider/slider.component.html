@@ -1,52 +1,139 @@
-<div class="slide-page">
+<form
+  [formGroup]="searchForm"
+  *ngIf="searchForm && f"
+  (ngSubmit)="advanceSearch()"
+>
+  <div class="slide-page">
     <div class="vehicle-card">
-        <div class="vehicle-card-title">
-            <span>Find your right car</span>
+      <div class="vehicle-card-title">
+        <span>Find your right car</span>
+      </div>
+      <div class="vehicle-card-buttons">
+        <!-- <div class="card-button">
+        <button>Buy Car</button>
+      </div>
+      <div class="card-button">
+        <button>Bid Car</button>
+      </div> -->
+
+        <c-button-group class="vehicle-card-buttons">
+          <div class="card-button">
+            <input
+              class="btn-check"
+              formControlName="bidBuyCar"
+              id="radio1"
+              type="radio"
+              value="buy"
+            />
+            <label
+              (click)="setRadioValue('buy')"
+              cButton
+              cFormCheckLabel
+              for="radio1"
+              variant="ghost"
+              [ngClass]="{ active: getRadioValue() === 'buy' }"
+              >Buy Car</label
+            >
+          </div>
+
+          <div class="card-button">
+            <input
+              class="btn-check"
+              formControlName="bidBuyCar"
+              id="radio2"
+              type="radio"
+              value="bid"
+            />
+            <label
+              (click)="setRadioValue('bid')"
+              cButton
+              cFormCheckLabel
+              for="radio2"
+              variant="ghost"
+              [ngClass]="{ active: getRadioValue() === 'bid' }"
+              >Bid Car</label
+            >
+          </div>
+        </c-button-group>
+      </div>
+      <div class="vehicle-card-select">
+        <div class="select-button">
+          <input
+            type="radio"
+            checked="checked"
+            formControlName="budgetBrand"
+            value="budget"
+          />
+          <span>By Budget</span>
         </div>
-        <div class="vehicle-card-buttons">
-            <div class='card-button'>
-                <button>New Car</button>
-            </div>
-            <div class='card-button'>
-                <button>Used Car</button>
-            </div>
+        <div class="select-button">
+          <input type="radio" formControlName="budgetBrand" value="brand" />
+          <span>By Brand</span>
         </div>
-        <div class="vehicle-card-select">
-            <div class="select-button">
-                <input type="radio" checked="checked" name='radio' />
-                <span>By Budget</span>
-            </div>
-            <div class="select-button">
-                <input type="radio" name='radio' />
-                <span>By Brand</span>
-            </div>
+      </div>
+      <div class="mt-3" *ngIf="f.budgetBrand.value === 'budget'">
+        <label cLabel for="customRange1"
+          >Price range - <strong>{{ f.price.value }}</strong></label
+        >
+        <input
+          formControlName="price"
+          cFormControl
+          id="customRange1"
+          type="range"
+          [max]="100000"
+          [min]="0"
+          style="width: 100%"
+        />
+      </div>
+      <div class="vehicle-card-input" *ngIf="f.budgetBrand.value === 'brand'">
+        <div class="vehicle-card-input-box" style="width: 100%">
+          <select
+            aria-label="Default select example"
+            cSelect
+            style="border: none"
+            formControlName="brand"
+            (change)="getModel()"
+          >
+            <option value="null">Select Car Brand</option>
+            <option *ngFor="let car of cars" [value]="car">
+              {{ car }}
+            </option>
+          </select>
         </div>
-        <div class="vehicle-card-input">
-            <div class="vehicle-card-input-box">
-                <input type="input" placeholder="Select Brand" />
-                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-            </div>
-            <div class="vehicle-card-input-box">
-                <input type="input" placeholder="Select Model" />
-                <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-            </div>
+        <div class="vehicle-card-input-box" style="width: 100%">
+          <select
+            aria-label="Default select example"
+            cSelect
+            style="border: none"
+            formControlName="model"
+          >
+            <option value="null">Open this select menu</option>
+            <option *ngFor="let model of displayModels" [value]="model.model">
+              {{ model.model }}
+            </option>
+          </select>
         </div>
-        <div class="vehicle-card-search">
-            <button>Search</button>
-        </div>
-        <div class="vehicle-card-advancedSearch">
-            <span>Advanced Search</span>
-            <mat-icon fontIcon="keyboard_arrow_right"></mat-icon>
-        </div>
+      </div>
+      <div class="vehicle-card-search">
+        <button>Search</button>
+      </div>
+      <div class="vehicle-card-advancedSearch">
+        <span>Advanced Search</span>
+        <mat-icon fontIcon="keyboard_arrow_right"></mat-icon>
+      </div>
     </div>
     <div class="slide-container">
-        <!-- <Slide>-->
-        <div class="each-slide">
-            <img src='https://stimg.cardekho.com/images/uploadimages/1623651873958/Desktop-Banner.jpg' alt="" />
-        </div>
-        <!-- <div class="each-slide">
+      <!-- <Slide>-->
+      <div class="each-slide">
+        <img
+          src="https://stimg.cardekho.com/images/uploadimages/1623651873958/Desktop-Banner.jpg"
+          alt=""
+        />
+      </div>
+      <!-- <div class="each-slide">
             <img src='https://stimg.cardekho.com/images/uploadimages/1630072524986/WEBCD.jpg' alt=""/>
         </div> -->
-        <!-- </Slide> -->
+      <!-- </Slide> -->
     </div>
-</div>
+  </div>
+</form>

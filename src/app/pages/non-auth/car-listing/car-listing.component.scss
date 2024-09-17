@@ -40,7 +40,7 @@
                 padding: 5px;
 
                 &:active,
-                &:focus {
+                &:focus, &.active {
                     color: #f75d34;
                     border-bottom: 2px solid #ff4c1b;
                 }

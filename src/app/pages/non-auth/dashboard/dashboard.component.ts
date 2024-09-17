@@ -4,15 +4,24 @@ import { MatIcon } from '@angular/material/icon';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { SliderComponent } from '../slider/slider.component';
 import { CarListingComponent } from '../car-listing/car-listing.component';
+import { FooterComponent } from '../footer/footer.component';
+import { ButtonDirective } from '@coreui/angular';
+import { PopoverModule,  ButtonCloseDirective,
+  ModalBodyComponent,
+  ModalComponent,
+  ModalFooterComponent,
+  ModalHeaderComponent,
+  ModalTitleDirective,
+  ThemeDirective } from '@coreui/angular';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatIcon, NavbarComponent, SliderComponent, CarListingComponent],
+  imports: [CommonModule, MatIcon, NavbarComponent, SliderComponent, CarListingComponent, FooterComponent, ButtonDirective, PopoverModule, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export default class DashboardComponent {
   emailLogin: string = '';
   constructor() { }
 
@@ -21,6 +30,16 @@ export class DashboardComponent {
     //   localStorage.removeItem('emailInput');
     //   this.router.navigate(['/']);
     // });
+  }
+
+  public visible = false;
+
+  toggleLiveDemo() {
+    this.visible = !this.visible;
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.visible = event;
   }
 
 
