@@ -1,0 +1,57 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <c-modal
+    [visible]="visible"
+    (visibleChange)="handleLiveDemoChange($event)"
+    #scrollingLongContentModal
+    id="scrollingLongContentModal"
+  >
+    <c-modal-header>
+      <h5 cModalTitle>Login</h5>
+      <!-- <button (click)="toggleLiveDemo()" cButtonClose></button> -->
+    </c-modal-header>
+    <c-modal-body>
+      <div [cFormFloating]="true">
+        <input
+          cFormControl
+          id="floatingInput"
+          placeholder="name@example.com"
+          type="email"
+          formControlName="email"
+        />
+        <label cLabel for="floatingInput">Email address</label>
+      </div>
+
+      <div
+        *ngIf="isFormSubmitted && f.email.errors"
+        class="input-group mb-3"
+        style="font-size: 0.7rem; color: red; position: absolute"
+      >
+        <div *ngIf="f.email.errors['required']">*Email is required</div>
+      </div>
+      <div cFormFloating class="mt-5">
+        <input
+          cFormControl
+          id="floatingPassword"
+          placeholder="Password"
+          type="password"
+          autocomplete="off"
+          formControlName="password"
+        />
+        <label cLabel for="floatingPassword">Password</label>
+      </div>
+      <div
+        *ngIf="isFormSubmitted && f.password.errors"
+        class="input-group"
+        style="font-size: 0.7rem; color: red; position: absolute"
+      >
+        <div *ngIf="f.password.errors['required']">*Password is required</div>
+      </div>
+    </c-modal-body>
+    <c-modal-footer>
+      <button (click)="toggleLiveDemo()" cButton color="secondary">
+        Close
+      </button>
+      <button cButton type="submit" color="primary">Save changes</button>
+    </c-modal-footer>
+  </c-modal>
+</form>
