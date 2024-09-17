@@ -5,6 +5,7 @@ import { AddressService } from '../../../core/services/address.service';
 import { CommonModule } from '@angular/common';
 import { ButtonDirective, TableModule, UtilitiesModule } from '@coreui/angular';
 import { Router, RouterModule } from '@angular/router';
+import { CarService } from '../../../core/services/car.service';
 
 @Component({
   selector: 'app-profile',
@@ -23,6 +24,7 @@ import { Router, RouterModule } from '@angular/router';
 export default class ProfileComponent implements OnInit {
   private userService = inject(UserService);
   private addressService = inject(AddressService);
+  private carService = inject(CarService);
   userDetails: any;
   addressList: any[] = [];
 
@@ -119,4 +121,12 @@ export default class ProfileComponent implements OnInit {
   editCar(car: any) {
     this.router.navigate(['/edit-car', car._id]);
   }
+
+  deleteCar(car: any) {
+    this.carService.deleteCar(car._id).subscribe((res) => {
+      window.location.reload();
+    });
+  }
+
+  uploadCarImage(car: any) {}
 }

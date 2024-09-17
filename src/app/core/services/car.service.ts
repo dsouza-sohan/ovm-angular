@@ -76,6 +76,15 @@ export class CarService {
     });
   }
 
+  deleteCar(id: any) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.delete<any>(`${environment.apiUrl}cars/${id}`, {
+      headers: headers,
+    });
+  }
+
   updateCar(formData: any, carid: string) {
     let headers: HttpHeaders = new HttpHeaders();
     headers.append('Content-Type', 'application/json');

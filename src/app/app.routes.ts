@@ -44,6 +44,19 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/non-auth/edit-car/edit-car.component'),
       },
+      {
+        path: 'wishlist',
+        loadComponent: () =>
+          import('./pages/non-auth/wishlist/wishlist.component'),
+      },
+      {
+        path: 'cart',
+        loadComponent: () => import('./pages/non-auth/cart/cart.component'),
+      },
+      {
+        path: 'orders',
+        loadComponent: () => import('./pages/non-auth/orders/orders.component'),
+      },
     ],
   },
 ];
