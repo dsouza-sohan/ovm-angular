@@ -160,3 +160,57 @@
     </div>
   </div>
 </form>
+
+<div
+  class="banner mb-24"
+  style="
+    margin: 65px;
+    background: aliceblue;
+    padding: 30px;
+    border-radius: 10px;
+  "
+>
+  <h6 style="font-weight: 500">My Posted Vehicles</h6>
+  <hr class="mt-24" />
+  <div
+    class="d-flex gap-24 flex-sm-noWrap flex-wrap justify-content-between"
+    style="gap: 20px"
+  >
+    <table cTable>
+      <thead cTableColor="dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Model</th>
+          <th scope="col">Price</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of userDetails.my_cars">
+          <th scope="row">1</th>
+          <td>{{ car.brand }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.price }}</td>
+          <td>{{ car.status }}</td>
+          <td>
+            <button
+              cButton
+              color="warning"
+              type="submit"
+              style="margin-right: 15px"
+              (click)="editCar(car)"
+            >
+              Edit Car
+            </button>
+            <button cButton color="secondary" style="margin-right: 15px">
+              View
+            </button>
+            <button cButton color="danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

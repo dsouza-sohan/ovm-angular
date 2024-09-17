@@ -16,7 +16,7 @@ export const routes: Routes = [
     component: SharedComponent,
     children: [
       {
-        path: 'dashboard',
+        path: '',
         loadComponent: () =>
           import('./pages/non-auth/dashboard/dashboard.component'),
       },
@@ -38,6 +38,11 @@ export const routes: Routes = [
         path: 'profile',
         loadComponent: () =>
           import('./pages/non-auth/profile/profile.component'),
+      },
+      {
+        path: 'edit-car/:id',
+        loadComponent: () =>
+          import('./pages/non-auth/edit-car/edit-car.component'),
       },
     ],
   },

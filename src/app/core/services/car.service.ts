@@ -26,6 +26,22 @@ export class CarService {
   }
 
   //Login function
+  getCarById(id: string) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http
+      .get<any>(`${environment.apiUrl}cars/${id}`, {
+        headers: headers,
+      })
+      .pipe(
+        map((result: any) => {
+          return result;
+        })
+      );
+  }
+
+  //Login function
   getCars(query: any = {}) {
     let headers: HttpHeaders = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
@@ -58,5 +74,18 @@ export class CarService {
     return this.http.post<any>(`${environment.apiUrl}cars`, formData, {
       headers: headers,
     });
+  }
+
+  updateCar(formData: any, carid: string) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.patch<any>(
+      `${environment.apiUrl}cars/${carid}`,
+      formData,
+      {
+        headers: headers,
+      }
+    );
   }
 }

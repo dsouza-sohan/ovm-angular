@@ -3,11 +3,20 @@ import { UserService } from '../../../core/services/user.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AddressService } from '../../../core/services/address.service';
 import { CommonModule } from '@angular/common';
+import { ButtonDirective, TableModule, UtilitiesModule } from '@coreui/angular';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    TableModule,
+    UtilitiesModule,
+    ButtonDirective,
+    RouterModule,
+  ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
@@ -17,7 +26,7 @@ export default class ProfileComponent implements OnInit {
   userDetails: any;
   addressList: any[] = [];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.getUserDetails();
     this.getAddress();
   }
@@ -105,5 +114,9 @@ export default class ProfileComponent implements OnInit {
       value === res.summaryline;
       return res;
     });
+  }
+
+  editCar(car: any) {
+    this.router.navigate(['/edit-car', car._id]);
   }
 }

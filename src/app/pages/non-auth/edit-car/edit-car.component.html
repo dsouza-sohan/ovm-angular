@@ -1,0 +1,702 @@
+<form cForm [formGroup]="carForm" (ngSubmit)="postCar()">
+  <div
+    class="car-groups-header-title"
+    style="
+      font-size: 30px;
+      font-weight: 500;
+      /* width: 80%; */
+      margin-left: 70px;
+      margin-top: 26px;
+    "
+  >
+    <span>Edit Your Car</span>
+  </div>
+
+  <div
+    class="banner mb-24"
+    style="
+      margin: 65px;
+      background: aliceblue;
+      padding: 30px;
+      border-radius: 10px;
+    "
+  >
+    <h6 style="font-weight: 500">Vehicle Details</h6>
+    <hr class="mt-24" />
+    <div
+      class="d-flex gap-24 flex-sm-noWrap flex-wrap justify-content-between"
+      style="gap: 20px"
+    >
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Brand</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="brand"
+          (change)="getModel()"
+        >
+          <option value="null">Select Car Brand</option>
+          <option *ngFor="let car of cars" [value]="car">
+            {{ car }}
+          </option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.brand.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.brand.errors['required']">*Brand is required</div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%" *ngIf="displayModels">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Model</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="model"
+        >
+          <option value="null">Select Car Model</option>
+          <option *ngFor="let model of displayModels" [value]="model.model">
+            {{ model.model }}
+          </option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.model.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.model.errors['required']">*Model is required</div>
+        </div>
+      </div>
+
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Ulez</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="ulez"
+        >
+          <option value="null">Select Car ulez</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.ulez.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.ulez.errors['required']">*Ulez is required</div>
+        </div>
+      </div>
+
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Address</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="address"
+        >
+          <option value="null">Select Car address</option>
+          <option *ngFor="let add of addressList" [value]="add.summaryline">
+            {{ add.summaryline }}
+          </option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.address.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.address.errors['required']">*Address is required</div>
+        </div>
+      </div>
+
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Bid Option</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="isBiddable"
+        >
+          <option value="null">Select Car Bid option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.isBiddable.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.isBiddable.errors['required']">
+            *Car Biddable is required
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Market Type</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="marketType"
+        >
+          <option value="null">Select Car Market type</option>
+          <option value="Featured">Featured</option>
+          <option value="Popular">Popular</option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.marketType.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.marketType.errors['required']">
+            *Market Type is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputEmail-1">Year</label>
+        <input
+          cFormControl
+          id="inputEmail-1"
+          type="number"
+          maxlength="4"
+          formControlName="year"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.year.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.year.errors['required']">*Year is required</div>
+        </div>
+        <!-- <div cFormText>We'll never share your email with anyone else</div> -->
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Mileage</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="text"
+          formControlName="mileage"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.mileage.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.mileage.errors['required']">*Mileage is required</div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputEmail-1">Fuel Economy</label>
+        <input
+          cFormControl
+          id="inputEmail-1"
+          type="text"
+          formControlName="fuelEconomy"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.fuelEconomy.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.fuelEconomy.errors['required']">
+            *Fuel Economy is required
+          </div>
+        </div>
+        <!-- <div cFormText>We'll never share your email with anyone else</div> -->
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Price</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="number"
+          formControlName="price"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.price.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.price.errors['required']">*Price is required</div>
+        </div>
+      </div>
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="vehicleDescription"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Vehicle Description</label>
+        <div
+          *ngIf="isFormSubmitted && f.vehicleDescription.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.vehicleDescription.errors['required']">
+            *Description is required
+          </div>
+        </div>
+      </div>
+
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="vehicleStats"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Vehicle Stats</label>
+        <div
+          *ngIf="isFormSubmitted && f.vehicleStats.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.vehicleStats.errors['required']">
+            *Stats is required
+          </div>
+        </div>
+      </div>
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="vehicleFeatures"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Vehicle Features</label>
+        <div
+          *ngIf="isFormSubmitted && f.vehicleFeatures.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.vehicleFeatures.errors['required']">
+            *Features is required
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="banner mb-24"
+    style="
+      margin: 65px;
+      background: aliceblue;
+      padding: 30px;
+      border-radius: 10px;
+    "
+  >
+    <h6 style="font-weight: 500">Vehicle Summary</h6>
+    <hr class="mt-24" />
+    <div
+      class="d-flex gap-24 flex-sm-noWrap flex-wrap justify-content-between"
+      style="gap: 20px"
+    >
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Drive Train</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="driveTrain"
+        >
+          <option value="null">Select Drive Train</option>
+          <option value="FWD">FWD</option>
+          <option value="RWD">RWD</option>
+          <option value="AWD">AWD</option>
+          <option value="4x4">4x4</option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.driveTrain.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.driveTrain.errors['required']">
+            *Drive Train is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Brand</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="fuelType"
+        >
+          <option value="null">Select Fuel Type</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Electric">Electric</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.fuelType.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.fuelType.errors['required']">
+            *Fuel Type is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Car Type</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="carType"
+        >
+          <option value="null">Select Car Brand</option>
+          <option value="Hatchback">Hatchback</option>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Van">Van</option>
+          <option value="Pickup">Pickup</option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.carType.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.carType.errors['required']">*Car Type is required</div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label clabel for="inputPassword-1" class="form-label" ng-reflect-col=""
+          >Transmission</label
+        >
+        <select
+          aria-label="Default select example"
+          cSelect
+          style="border: none"
+          formControlName="transmission"
+        >
+          <option value="null">Select Car Brand</option>
+          <option value="Automatic">Automatic</option>
+          <option value="Manual">Manual</option>
+        </select>
+        <div
+          *ngIf="isFormSubmitted && f.transmission.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.transmission.errors['required']">
+            *Transmission is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Miles Driven</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="number"
+          formControlName="milesDriven"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.milesDriven.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.milesDriven.errors['required']">
+            *Miles Driven is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Seats</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="number"
+          formControlName="seats"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.seats.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.seats.errors['required']">*Seats is required</div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Door</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="number"
+          formControlName="doors"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.doors.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.doors.errors['required']">*Doors is required</div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Miles Driven</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="number"
+          formControlName="milesDriven"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.milesDriven.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.milesDriven.errors['required']">
+            *Miles Driven is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Number of Owners</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="number"
+          formControlName="owners"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.owners.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.owners.errors['required']">*Owners is required</div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Color</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="string"
+          formControlName="color"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.color.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.color.errors['required']">*Color is required</div>
+        </div>
+      </div>
+      <div class="mb-3" style="width: 48%">
+        <label cLabel for="inputPassword-1">Registration Number</label>
+        <input
+          cFormControl
+          id="inputPassword-1"
+          type="string"
+          formControlName="registrationNumber"
+        />
+        <div
+          *ngIf="isFormSubmitted && f.registrationNumber.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.registrationNumber.errors['required']">
+            *Registration Number is required
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="banner mb-24"
+    style="
+      margin: 65px;
+      background: aliceblue;
+      padding: 30px;
+      border-radius: 10px;
+    "
+  >
+    <h6 style="font-weight: 500">Vehicle Technical Summary</h6>
+    <hr class="mt-24" />
+    <div
+      class="d-flex gap-24 flex-sm-noWrap flex-wrap justify-content-between"
+      style="gap: 20px"
+    >
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="battery"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Battery</label>
+      </div>
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="dimensions"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Dimensions</label>
+      </div>
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="engineAndDriveTrain"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Engine And Drive Train</label>
+      </div>
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="general"
+        ></textarea>
+        <label cLabel for="floatingTextarea">General</label>
+      </div>
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="performance"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Performance</label>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="banner mb-24"
+    style="
+      margin: 65px;
+      background: aliceblue;
+      padding: 30px;
+      border-radius: 10px;
+    "
+  >
+    <h6 style="font-weight: 500">Vehicle Standard Equipment</h6>
+    <hr class="mt-24" />
+    <div
+      class="d-flex gap-24 flex-sm-noWrap flex-wrap justify-content-between"
+      style="gap: 20px"
+    >
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="audioAndCommunicatons"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Audio And Communication</label>
+      </div>
+
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="exterior"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Exterior</label>
+      </div>
+
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="safetyAndSecurity"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Safety And Security</label>
+      </div>
+
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="driversAssistance"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Drivers Assistance</label>
+      </div>
+
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="illumination"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Illumination</label>
+      </div>
+
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="interior"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Interior</label>
+      </div>
+
+      <div cFormFloating style="width: 48%">
+        <textarea
+          cFormControl
+          id="floatingTextarea"
+          formControlName="performance1"
+        ></textarea>
+        <label cLabel for="floatingTextarea">Performance</label>
+      </div>
+    </div>
+  </div>
+  <div
+    class="banner mb-24"
+    style="
+      margin: 65px;
+      background: aliceblue;
+      padding: 30px;
+      border-radius: 10px;
+      justify-content: flex-end;
+      display: flex;
+    "
+  >
+    <button cButton color="warning" type="submit" style="margin-right: 15px">
+      Update Car
+    </button>
+    <button cButton color="secondary">Cancel</button>
+  </div>
+
+  <!-- <div
+      class="banner mb-24"
+      style="
+        margin: 65px;
+        background: aliceblue;
+        padding: 30px;
+        border-radius: 10px;
+      "
+    >
+      <h6 style="font-weight: 500">Vehicle Owner</h6>
+      <hr class="mt-24" />
+      <p class="mt-24">Snow Chains - $ 150</p>
+    </div> -->
+</form>

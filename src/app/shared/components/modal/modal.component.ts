@@ -96,7 +96,7 @@ export class Modal1Component {
       this.loginService.login(formdata).subscribe((res) => {
         if (res.data) {
           this._modalService.updateQuote(false);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/']);
         }
       });
     }
