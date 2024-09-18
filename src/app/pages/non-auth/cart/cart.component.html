@@ -67,5 +67,7 @@
     </div>
   </div>
 
-  <button class="checkout">Checkout</button>
+  <button class="checkout" (click)="pay()">Checkout</button>
 </div>
+
+<app-payment #paymentGateway></app-payment>
