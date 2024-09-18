@@ -5,6 +5,7 @@ import {
   FormSelectDirective,
   FormModule,
   ButtonDirective,
+  GridModule,
 } from '@coreui/angular';
 import { AddressService } from '../../../core/services/address.service';
 import { CarService } from '../../../core/services/car.service';
@@ -19,6 +20,7 @@ import { ActivatedRoute } from '@angular/router';
     ReactiveFormsModule,
     CommonModule,
     ButtonDirective,
+    GridModule,
   ],
   templateUrl: './edit-car.component.html',
   styleUrl: './edit-car.component.scss',

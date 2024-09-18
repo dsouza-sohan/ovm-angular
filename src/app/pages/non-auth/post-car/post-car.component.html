@@ -497,12 +497,35 @@
       </div>
       <div class="mb-3" style="width: 48%">
         <label cLabel for="inputPassword-1">Color</label>
-        <input
+        <!-- <input
           cFormControl
           id="inputPassword-1"
           type="string"
           formControlName="color"
-        />
+        /> -->
+        <c-row class="align-items-center g-2">
+          <c-col xs="auto">
+            <label cLabel="col" for="exampleColorInput">Color picker</label>
+          </c-col>
+          <c-col xs="auto">
+            <input
+              formControlName="color"
+              cFormControl
+              id="exampleColorInput"
+              title="Choose your color"
+              type="color"
+            />
+          </c-col>
+          <c-col xs="auto">
+            <div
+              [ngStyle]="{ backgroundColor: f.color.value }"
+              class="color-box p-1 m-1"
+            ></div>
+          </c-col>
+          <c-col xs="auto">
+            <strong>{{ f.color.value }}</strong>
+          </c-col>
+        </c-row>
         <div
           *ngIf="isFormSubmitted && f.color.errors"
           class="input-group mb-3"

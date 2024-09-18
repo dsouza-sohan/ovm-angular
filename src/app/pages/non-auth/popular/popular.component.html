@@ -1,0 +1,62 @@
+<div class="car-groups" *ngIf="cars.length">
+  <div class="car-groups-container">
+    <div class="car-groups-header">
+      <div class="car-groups-header-title">
+        <span>ThePopular cars</span>
+      </div>
+    </div>
+    <div class="car-groups-items" style="flex-wrap: wrap">
+      <div *ngFor="let car of cars">
+        <div class="caritem">
+          <div class="caritem-container">
+            <div class="caritem-image">
+              <img
+                src="https://stimg.cardekho.com/images/carexteriorimages/630x420/Tata/New-Safari/8376/Tata-New-Safari-XZA-Plus-Adventure-Edition-AT/1614147643555/front-left-side-47.jpg"
+                alt=""
+              />
+            </div>
+            <div class="caritem-title">
+              <span>Tata Safari XZA Plus Gold AT</span>
+            </div>
+            <div class="caritem-price">
+              <span>Rs 23.17 Lakh</span>
+            </div>
+            <div class="caritem-offers">
+              <button *ngIf="!car.isBiddable" (click)="carDetails(car)">
+                Buy
+              </button>
+              <button *ngIf="car.isBiddable" (click)="carDetails(car)">
+                Bid
+              </button>
+            </div>
+            <!-- <div class="caritem-available">
+                <span>33 Available Cars</span>
+              </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- <div>
+                  <div class="caritem">
+                      <div class="caritem-container">
+                          <div class="caritem-image">
+                              <img src={image} alt=""/>
+                          </div>
+                          <div class="caritem-title">
+                              <span>{title}</span>
+                          </div>
+                          <div class="caritem-price">
+                              <span>{price}</span>
+                          </div>
+                          {available===undefined?
+                          <div class="caritem-offers">
+                              <button>Check September Offers</button>
+                          </div>:
+                          <div class="caritem-available">
+                              <span>{available}</span>
+                          </div>}
+                      </div>
+                  </div>
+              </div> -->
+    </div>
+  </div>
+</div>

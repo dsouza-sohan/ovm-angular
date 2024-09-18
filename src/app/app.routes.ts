@@ -57,6 +57,11 @@ export const routes: Routes = [
         path: 'orders',
         loadComponent: () => import('./pages/non-auth/orders/orders.component'),
       },
+      {
+        path: 'search-car/:id',
+        loadComponent: () =>
+          import('./pages/non-auth/search-car/search-car.component'),
+      },
     ],
   },
 ];

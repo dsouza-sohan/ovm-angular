@@ -4,6 +4,7 @@ import {
   ButtonDirective,
   FormModule,
   FormSelectDirective,
+  GridModule,
 } from '@coreui/angular';
 import { CarService } from '../../../core/services/car.service';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,7 @@ import { AddressService } from '../../../core/services/address.service';
     ReactiveFormsModule,
     CommonModule,
     ButtonDirective,
+    GridModule,
   ],
   templateUrl: './post-car.component.html',
   styleUrl: './post-car.component.scss',
@@ -121,6 +123,7 @@ export default class PostCarComponent {
   }
 
   postCar() {
+    console.log(this.f.color.value);
     this.isFormSubmitted = true;
     if (this.carForm.invalid) {
       return;

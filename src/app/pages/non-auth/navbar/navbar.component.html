@@ -2,7 +2,7 @@
   <div class="navbar-container">
     <div class="navbar-header">
       <div class="navbar-header-left">
-        <div class="navbar-header-left-logo">
+        <div class="navbar-header-left-logo" (click)="toDashboard()">
           <img src="ovmlogo.png" alt="" />
         </div>
         <div class="navbar-header-left-search">
@@ -10,9 +10,10 @@
             <input
               type="text"
               placeholder="Search Cars or brands eg. Swift, or Maruti"
+              [(ngModel)]="searchCar"
             />
           </div>
-          <div class="navbar-search-icon">
+          <div class="navbar-search-icon" (click)="searchCars()">
             <mat-icon fontIcon="search"></mat-icon>
           </div>
         </div>
