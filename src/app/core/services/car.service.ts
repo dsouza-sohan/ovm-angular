@@ -26,12 +26,12 @@ export class CarService {
   }
 
   //Login function
-  getCarById(id: string) {
+  getCarById(id: string, user: any) {
     let headers: HttpHeaders = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     headers = headers.append('Accept', 'application/json');
     return this.http
-      .get<any>(`${environment.apiUrl}cars/${id}`, {
+      .get<any>(`${environment.apiUrl}cars/${id}/${user}`, {
         headers: headers,
       })
       .pipe(

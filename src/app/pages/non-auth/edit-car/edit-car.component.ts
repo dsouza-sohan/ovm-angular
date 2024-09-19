@@ -146,11 +146,16 @@ export default class EditCarComponent implements OnInit {
   }
 
   getCarById() {
-    this.carService.getCarById(this.carId).subscribe((res) => {
-      this.carDetails = res.data;
+    this.carService
+      .getCarById(
+        this.carId,
+        JSON.parse(localStorage.getItem('currentUser') || '{}').id
+      )
+      .subscribe((res) => {
+        this.carDetails = res.data;
 
-      this.setEditForm();
-    });
+        this.setEditForm();
+      });
   }
 
   setEditForm() {

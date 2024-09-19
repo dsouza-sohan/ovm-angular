@@ -15,71 +15,30 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let wish of wishlist">
                 <td width="45%">
                   <div class="display-flex align-center">
                     <div class="img-product">
                       <img
-                        src="https://www.91-img.com/pictures/laptops/asus/asus-x552cl-sx019d-core-i3-3rd-gen-4-gb-500-gb-dos-1-gb-61721-large-1.jpg"
+                        src="data:image/jpeg;base64,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"
                         alt=""
                         class="mCS_img_loaded"
                       />
                     </div>
-                    <div class="name-product">Apple iPad Mini</div>
+                    <div class="name-product">{{ wish.car.brand }}</div>
                   </div>
                 </td>
-                <td width="15%"><span class="in-stock-box">In Stock</span></td>
-                <td width="15%" class="price">$110.00</td>
                 <td width="15%">
-                  <button class="round-black-btn small-btn">Add to Cart</button>
+                  <span class="in-stock-box">{{ wish.car.model }}</span>
                 </td>
-                <td width="10%" class="text-center">
-                  <a href="#" class="trash-icon"
-                    ><i class="far fa-trash-alt"></i
-                  ></a>
-                </td>
-              </tr>
-              <tr>
-                <td width="45%">
-                  <div class="display-flex align-center">
-                    <div class="img-product">
-                      <img
-                        src="https://www.91-img.com/pictures/laptops/asus/asus-x552cl-sx019d-core-i3-3rd-gen-4-gb-500-gb-dos-1-gb-61721-large-1.jpg"
-                        alt=""
-                        class="mCS_img_loaded"
-                      />
-                    </div>
-                    <div class="name-product">Apple iPad Mini</div>
-                  </div>
-                </td>
-                <td width="15%"><span class="in-stock-box">In Stock</span></td>
-                <td width="15%" class="price">$110.00</td>
+                <td width="15%" class="price">${{ wish.car.price }}.00</td>
                 <td width="15%">
-                  <button class="round-black-btn small-btn">Add to Cart</button>
-                </td>
-                <td width="10%" class="text-center">
-                  <a href="#" class="trash-icon"
-                    ><i class="far fa-trash-alt"></i
-                  ></a>
-                </td>
-              </tr>
-              <tr>
-                <td width="45%">
-                  <div class="display-flex align-center">
-                    <div class="img-product">
-                      <img
-                        src="https://www.91-img.com/pictures/laptops/asus/asus-x552cl-sx019d-core-i3-3rd-gen-4-gb-500-gb-dos-1-gb-61721-large-1.jpg"
-                        alt=""
-                        class="mCS_img_loaded"
-                      />
-                    </div>
-                    <div class="name-product">Apple iPad Mini</div>
-                  </div>
-                </td>
-                <td width="15%"><span class="in-stock-box">In Stock</span></td>
-                <td width="15%" class="price">$110.00</td>
-                <td width="15%">
-                  <button class="round-black-btn small-btn">Add to Cart</button>
+                  <button
+                    class="round-black-btn small-btn"
+                    (click)="addToCart(wish.car._id, wish._id)"
+                  >
+                    Add to Cart
+                  </button>
                 </td>
                 <td width="10%" class="text-center">
                   <a href="#" class="trash-icon"

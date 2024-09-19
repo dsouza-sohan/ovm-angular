@@ -213,7 +213,12 @@
             >
               Edit Car
             </button>
-            <button cButton color="secondary" style="margin-right: 15px">
+            <button
+              cButton
+              color="secondary"
+              [routerLink]="['/car-details', car._id]"
+              style="margin-right: 15px"
+            >
               View
             </button>
             <button cButton color="danger" (click)="deleteCar(car)">

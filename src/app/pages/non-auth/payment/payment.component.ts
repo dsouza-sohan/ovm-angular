@@ -1,5 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { OrdersService } from '../../../core/services/orders.service';
+import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-payment',
@@ -13,6 +15,9 @@ export default class PaymentComponent implements OnInit {
   public paymentMessageShown: boolean = false;
   public paymentMessageSuccess: boolean = false;
   public paymentMessageText: any;
+
+  private orderService = inject(OrdersService);
+  private cartService = inject(CartService);
   public productList: any[] = [
     {
       name: 'Small plan',
@@ -42,7 +47,7 @@ export default class PaymentComponent implements OnInit {
 
   public initializePayment(product: any) {
     const paymentHandler = (window as any).StripeCheckout.configure({
-      key: 'sk_test_51PyBiv03YUs9ds2ynNrIwFc09oKNjmm7sbJgzkUHAvP9SG0qyH8q0B9mwsf7S6aMTbaqzBqzWs4xTfvuDLa3yFP000iawEuE12',
+      key: 'pk_test_51PyBiv03YUs9ds2ysxuFGBWTlTrSDx75iwPfkmECWuolHmwJ8vSmMVDU5AsJksMiHcS3BKgvK0JjF5H2oWO3jnBU00eHGFkp2p',
       locale: 'auto',
       token: (stripeToken: any) => {
         this.processPayment(product, stripeToken);
@@ -57,13 +62,20 @@ export default class PaymentComponent implements OnInit {
   }
 
   private processPayment(product: any, stripeToken: any) {
-    this.http
-      .post('path_to_backend', {
-        description: product.description,
-        amount: product.amount * 100,
-        currency: product.currency,
-        stripeToken: stripeToken.id,
-      })
+    console.log(stripeToken);
+    this.orderService
+      .paymentDone(
+        product.car._id,
+        JSON.parse(localStorage.getItem('currentUser') || '{}').id,
+        {
+          paymentDetails: {
+            description: product.vehicleDescription,
+            price: product.amount,
+            method: 'Card',
+            paymentId: stripeToken.id,
+          },
+        }
+      )
       .subscribe(
         (data) => {
           this.paymentMessageShown = true;
@@ -71,7 +83,12 @@ export default class PaymentComponent implements OnInit {
           this.paymentMessageText = 'Payment was successfull';
           setTimeout(() => {
             this.paymentMessageShown = false;
-          }, 4000);
+            this.cartService
+              .removeFromCartByid(product._id)
+              .subscribe((res) => {
+                window.location.reload();
+              });
+          }, 1000);
         },
         (error) => {
           this.paymentMessageShown = true;
