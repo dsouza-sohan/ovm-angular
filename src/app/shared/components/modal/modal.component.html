@@ -1,57 +1,189 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<div>
   <c-modal
     [visible]="visible"
     (visibleChange)="handleLiveDemoChange($event)"
     #scrollingLongContentModal
     id="scrollingLongContentModal"
   >
-    <c-modal-header>
-      <h5 cModalTitle>Login</h5>
-      <!-- <button (click)="toggleLiveDemo()" cButtonClose></button> -->
-    </c-modal-header>
-    <c-modal-body>
-      <div [cFormFloating]="true">
-        <input
-          cFormControl
-          id="floatingInput"
-          placeholder="name@example.com"
-          type="email"
-          formControlName="email"
-        />
-        <label cLabel for="floatingInput">Email address</label>
-      </div>
+    <form *ngIf="view === 'login'" [formGroup]="loginForm" (ngSubmit)="login()">
+      <c-modal-header>
+        <h5 cModalTitle>Login</h5>
+        <!-- <button (click)="toggleLiveDemo()" cButtonClose></button> -->
+      </c-modal-header>
+      <c-modal-body>
+        <div [cFormFloating]="true">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="name@example.com"
+            type="email"
+            formControlName="email"
+          />
+          <label cLabel for="floatingInput">Email address</label>
+        </div>
 
-      <div
-        *ngIf="isFormSubmitted && f.email.errors"
-        class="input-group mb-3"
-        style="font-size: 0.7rem; color: red; position: absolute"
-      >
-        <div *ngIf="f.email.errors['required']">*Email is required</div>
-      </div>
-      <div cFormFloating class="mt-5">
-        <input
-          cFormControl
-          id="floatingPassword"
-          placeholder="Password"
-          type="password"
-          autocomplete="off"
-          formControlName="password"
-        />
-        <label cLabel for="floatingPassword">Password</label>
-      </div>
-      <div
-        *ngIf="isFormSubmitted && f.password.errors"
-        class="input-group"
-        style="font-size: 0.7rem; color: red; position: absolute"
-      >
-        <div *ngIf="f.password.errors['required']">*Password is required</div>
-      </div>
-    </c-modal-body>
-    <c-modal-footer>
-      <button (click)="toggleLiveDemo()" cButton color="secondary">
-        Close
-      </button>
-      <button cButton type="submit" color="primary">Save changes</button>
-    </c-modal-footer>
+        <div
+          *ngIf="isFormSubmitted && f.email.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.email.errors['required']">*Email is required</div>
+        </div>
+        <div cFormFloating class="mt-5">
+          <input
+            cFormControl
+            id="floatingPassword"
+            placeholder="Password"
+            type="password"
+            autocomplete="off"
+            formControlName="password"
+          />
+          <label cLabel for="floatingPassword">Password</label>
+        </div>
+        <div
+          *ngIf="isFormSubmitted && f.password.errors"
+          class="input-group"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="f.password.errors['required']">*Password is required</div>
+        </div>
+        <div class="mt-2">
+          Dont have an account?
+          <span
+            (click)="changeView('register')"
+            style="text-decoration: underline; color: blue; cursor: pointer"
+            >Register</span
+          >
+        </div>
+      </c-modal-body>
+      <c-modal-footer>
+        <button (click)="toggleLiveDemo()" cButton color="secondary">
+          Close
+        </button>
+        <button cButton type="submit" color="primary">Save changes</button>
+      </c-modal-footer>
+    </form>
+    <form
+      *ngIf="view === 'register'"
+      [formGroup]="regForm"
+      (ngSubmit)="register()"
+    >
+      <c-modal-header>
+        <h5 cModalTitle>Register</h5>
+        <!-- <button (click)="toggleLiveDemo()" cButtonClose></button> -->
+      </c-modal-header>
+      <c-modal-body>
+        <div [cFormFloating]="true">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="xxxx"
+            type="text"
+            formControlName="firstname"
+          />
+          <label cLabel for="floatingInput">Firstname</label>
+        </div>
+
+        <div
+          *ngIf="isRegFormSubmitted && r.firstname.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="r.firstname.errors['required']">
+            *Firstname is required
+          </div>
+        </div>
+
+        <div [cFormFloating]="true" class="mt-5">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="xxxx"
+            type="text"
+            formControlName="lastname"
+          />
+          <label cLabel for="floatingInput">Lastname</label>
+        </div>
+
+        <div
+          *ngIf="isRegFormSubmitted && r.lastname.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="r.lastname.errors['required']">*Lastname is required</div>
+        </div>
+
+        <div [cFormFloating]="true" class="mt-5">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="name@example.com"
+            type="email"
+            formControlName="email"
+          />
+          <label cLabel for="floatingInput">Email address</label>
+        </div>
+
+        <div
+          *ngIf="isRegFormSubmitted && r.email.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="r.email.errors['required']">*Email is required</div>
+        </div>
+        <div cFormFloating class="mt-5">
+          <input
+            cFormControl
+            id="floatingPassword"
+            placeholder="Password"
+            type="password"
+            autocomplete="off"
+            formControlName="password"
+          />
+          <label cLabel for="floatingPassword">Password</label>
+        </div>
+        <div
+          *ngIf="isRegFormSubmitted && r.password.errors"
+          class="input-group"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="r.password.errors['required']">*Password is required</div>
+        </div>
+
+        <div [cFormFloating]="true" class="mt-5">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="xxxx"
+            type="text"
+            formControlName="phone"
+          />
+          <label cLabel for="floatingInput">Phone</label>
+        </div>
+
+        <div
+          *ngIf="isRegFormSubmitted && r.phone.errors"
+          class="input-group mb-3"
+          style="font-size: 0.7rem; color: red; position: absolute"
+        >
+          <div *ngIf="r.phone.errors['required']">*Phone is required</div>
+        </div>
+
+        <div class="mt-3">
+          Have an account?
+          <span
+            (click)="changeView('login')"
+            style="text-decoration: underline; color: blue; cursor: pointer"
+            >Login</span
+          >
+        </div>
+      </c-modal-body>
+      <c-modal-footer>
+        <button (click)="toggleLiveDemo()" cButton color="secondary">
+          Close
+        </button>
+        <button cButton type="submit" color="primary">Save changes</button>
+      </c-modal-footer>
+    </form>
   </c-modal>
-</form>
+</div>

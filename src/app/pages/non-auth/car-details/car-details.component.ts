@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { CarService } from '../../../core/services/car.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,7 @@ import PopularComponent from '../popular/popular.component';
 import FeaturedComponent from '../featured/featured.component';
 import { CartService } from '../../../core/services/cart.service';
 import { WishlistService } from '../../../core/services/wishlist.service';
+import { BidModalService } from '../../../core/services/bid-modal.service';
 
 @Component({
   selector: 'app-car-details',
@@ -14,10 +15,11 @@ import { WishlistService } from '../../../core/services/wishlist.service';
   templateUrl: './car-details.component.html',
   styleUrl: './car-details.component.scss',
 })
-export default class CarDetailsComponent {
+export default class CarDetailsComponent implements OnDestroy {
   private carService = inject(CarService);
   private cartService = inject(CartService);
   private wishlistService = inject(WishlistService);
+  private _modalService = inject(BidModalService);
   carDetails: any;
   carId: any;
   recommended: any;
@@ -39,6 +41,7 @@ export default class CarDetailsComponent {
         this.carDetails = res.data;
         this.recommended = this.carDetails.recommended;
         console.log('recommended', this.recommended);
+        localStorage.setItem('carDetails', JSON.stringify(this.carDetails));
       });
   }
 
@@ -51,6 +54,10 @@ export default class CarDetailsComponent {
       .subscribe((res) => {
         window.location.reload();
       });
+  }
+
+  openBidModal() {
+    this._modalService.updateBidModal(true);
   }
 
   gotToCart() {
@@ -72,5 +79,9 @@ export default class CarDetailsComponent {
     this.wishlistService.removeFromWishlistByid(wishlistId).subscribe((res) => {
       window.location.reload();
     });
+  }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('carDetails');
   }
 }

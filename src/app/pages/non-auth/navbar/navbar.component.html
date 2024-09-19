@@ -63,19 +63,28 @@
     <div class="navbar-footer">
       <div class="navbar-footer-left">
         <div class="navbar-footer-left-categories">
-          <div class="navbar-footer-left-categories-name">
+          <div
+            class="navbar-footer-left-categories-name"
+            [routerLink]="['/cars']"
+          >
             <p>BUY CAR</p>
           </div>
           <div class="navbar-footer-left-categories-dropmenu">
             <mat-icon fontIcon="arrow_drop_down"></mat-icon>
           </div>
-          <div class="navbar-footer-left-categories-name">
+          <div
+            class="navbar-footer-left-categories-name"
+            [routerLink]="['/post-car']"
+          >
             <p>SELL CAR</p>
           </div>
           <div class="navbar-footer-left-categories-dropmenu">
             <mat-icon fontIcon="arrow_drop_down"></mat-icon>
           </div>
-          <div class="navbar-footer-left-categories-name">
+          <div
+            class="navbar-footer-left-categories-name"
+            [routerLink]="['/cars']"
+          >
             <p>BID CAR</p>
           </div>
           <div class="navbar-footer-left-categories-dropmenu">
@@ -84,6 +93,7 @@
           <div
             class="navbar-footer-left-categories-name"
             style="margin-right: '15px'"
+            [routerLink]="['/orders']"
           >
             <p>ORDERS</p>
           </div>

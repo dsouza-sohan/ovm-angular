@@ -15,7 +15,7 @@ export class CarService {
     headers.append('Content-Type', 'application/json');
     headers = headers.append('Accept', 'application/json');
     return this.http
-      .get<any>(`${environment.apiUrl}cars/brand/model`, {
+      .get<any>(`${environment.apiUrl}cars/brand/model/search`, {
         headers: headers,
       })
       .pipe(

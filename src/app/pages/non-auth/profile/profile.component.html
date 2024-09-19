@@ -188,8 +188,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let car of userDetails.my_cars">
-          <th scope="row">1</th>
+        <tr *ngFor="let car of userDetails?.my_cars; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
           <td>{{ car.brand }}</td>
           <td>{{ car.model }}</td>
           <td>{{ car.price }}</td>
@@ -223,6 +223,104 @@
             </button>
             <button cButton color="danger" (click)="deleteCar(car)">
               Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div
+  class="banner mb-24"
+  style="
+    margin: 65px;
+    background: aliceblue;
+    padding: 30px;
+    border-radius: 10px;
+  "
+>
+  <h6 style="font-weight: 500">My Vehicles Biddings (Given)</h6>
+  <hr class="mt-24" />
+  <div
+    class="d-flex gap-24 flex-sm-noWrap flex-wrap justify-content-between"
+    style="gap: 20px"
+  >
+    <table cTable>
+      <thead cTableColor="dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Model</th>
+          <th scope="col">Price</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of userDetails?.bidding">
+          <th scope="row">1</th>
+          <td>{{ car.car.brand }}</td>
+          <td>{{ car.car.model }}</td>
+          <td>{{ car.car.price }}</td>
+          <td>{{ car.car.status }}</td>
+          <td>
+            <button
+              cButton
+              color="secondary"
+              [routerLink]="['/car-details', car.car._id]"
+              style="margin-right: 15px"
+            >
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div
+  class="banner mb-24"
+  style="
+    margin: 65px;
+    background: aliceblue;
+    padding: 30px;
+    border-radius: 10px;
+  "
+>
+  <h6 style="font-weight: 500">My Vehicles Biddings (Received)</h6>
+  <hr class="mt-24" />
+  <div
+    class="d-flex gap-24 flex-sm-noWrap flex-wrap justify-content-between"
+    style="gap: 20px"
+  >
+    <table cTable>
+      <thead cTableColor="dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Model</th>
+          <th scope="col">Price</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of userDetails?.bidding">
+          <th scope="row">1</th>
+          <td>{{ car.car.brand }}</td>
+          <td>{{ car.car.model }}</td>
+          <td>{{ car.car.price }}</td>
+          <td>{{ car.car.status }}</td>
+          <td>
+            <button
+              cButton
+              color="success"
+              (click)="acceptBid(car.car._id)"
+              style="margin-right: 15px"
+            >
+              Accepet Bid
             </button>
           </td>
         </tr>

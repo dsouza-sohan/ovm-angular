@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { CarService } from '../../../core/services/car.service';
 import { Router, RouterModule } from '@angular/router';
+import { ModalService } from '../../../core/services/modal.service';
 
 @Component({
   selector: 'ovm-car-listing',
@@ -55,7 +56,7 @@ export class CarListingComponent {
     this.getCars();
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private _modalService: ModalService) {
     this.getCars();
   }
 
@@ -74,6 +75,9 @@ export class CarListingComponent {
 
   carDetails(car: any) {
     console.log(car);
+    if (JSON.parse(localStorage.getItem('currentUser') || '{}')) {
+      return this._modalService.updateQuote(true);
+    }
     this.router.navigate(['/car-details', car._id]);
   }
 }

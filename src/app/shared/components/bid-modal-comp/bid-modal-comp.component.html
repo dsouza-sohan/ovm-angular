@@ -1,0 +1,43 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <c-modal
+    [visible]="visible"
+    (visibleChange)="handleLiveDemoChange($event)"
+    #scrollingLongContentModal
+    id="scrollingLongContentModal"
+  >
+    <c-modal-header>
+      <h5 cModalTitle>Bid this car</h5>
+      <!-- <button (click)="toggleLiveDemo()" cButtonClose></button> -->
+    </c-modal-header>
+    <c-modal-body>
+      <div style="margin-bottom: 10px; font-weight: 500">
+        Please enter you bidding price, the seller will review and get back to
+        you
+      </div>
+      <div [cFormFloating]="true">
+        <input
+          cFormControl
+          id="floatingInput"
+          placeholder="10000"
+          type="text"
+          formControlName="price"
+        />
+        <label cLabel for="floatingInput">Bidding Price</label>
+      </div>
+
+      <div
+        *ngIf="isFormSubmitted && f.price.errors"
+        class="input-group mb-3"
+        style="font-size: 0.7rem; color: red; position: absolute"
+      >
+        <div *ngIf="f.price.errors['required']">*Bid Price is required</div>
+      </div>
+    </c-modal-body>
+    <c-modal-footer>
+      <button (click)="toggleLiveDemo()" cButton color="secondary">
+        Close
+      </button>
+      <button cButton type="submit" color="primary">Save changes</button>
+    </c-modal-footer>
+  </c-modal>
+</form>

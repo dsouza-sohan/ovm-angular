@@ -129,4 +129,6 @@ export default class ProfileComponent implements OnInit {
   }
 
   uploadCarImage(car: any) {}
+
+  acceptBid(carId: any) {}
 }

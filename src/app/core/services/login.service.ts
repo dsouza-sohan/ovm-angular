@@ -29,4 +29,20 @@ export class LoginService {
         })
       );
   }
+
+  //Login function
+  register(formData: any) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http
+      .post<any>(`${environment.apiUrl}auth/register`, formData, {
+        headers: headers,
+      })
+      .pipe(
+        map((result: any) => {
+          return result;
+        })
+      );
+  }
 }

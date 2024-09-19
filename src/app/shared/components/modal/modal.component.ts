@@ -47,6 +47,7 @@ import { LoginService } from '../../../core/services/login.service';
 })
 export class Modal1Component {
   public visible = false;
+  view = 'login';
 
   constructor(
     private _modalService: ModalService,
@@ -69,15 +70,33 @@ export class Modal1Component {
     this.visible = event;
   }
 
+  changeView(changedView: string) {
+    this.view = changedView;
+  }
+
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
+  regForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+    firstname: ['', Validators.required],
+    lastname: ['', Validators.required],
+    phone: ['', Validators.required],
+    address: [''],
+  });
+
   isFormSubmitted: boolean = false;
+  isRegFormSubmitted: boolean = false;
 
   get f() {
     return this.loginForm.controls;
+  }
+
+  get r() {
+    return this.regForm.controls;
   }
 
   private loginService = inject(LoginService);
@@ -94,6 +113,29 @@ export class Modal1Component {
         role: 'User',
       };
       this.loginService.login(formdata).subscribe((res) => {
+        if (res.data) {
+          this._modalService.updateQuote(false);
+          this.router.navigate(['/']);
+        }
+      });
+    }
+  }
+
+  register() {
+    this.isRegFormSubmitted = true;
+    if (this.regForm.invalid) {
+      return;
+    } else {
+      let formdata = {
+        email: this.r.email.value,
+        password: this.r.password.value,
+        firstname: this.r.password.value,
+        lastname: this.r.password.value,
+        phone: this.r.password.value,
+        address: this.r.address.value,
+        role: 'User',
+      };
+      this.loginService.register(formdata).subscribe((res) => {
         if (res.data) {
           this._modalService.updateQuote(false);
           this.router.navigate(['/']);
